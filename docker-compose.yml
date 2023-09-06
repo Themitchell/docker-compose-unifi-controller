@@ -3,7 +3,7 @@ version: '3'
 services:
   unifi-controller:
     image: lscr.io/linuxserver/unifi-controller:latest
-    hostname: ${UNIFI_HOSTNAME}
+    hostname: ${VIRTUAL_HOST}
     container_name: unifi-controller
     environment:
       PUID: 1000
