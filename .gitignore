@@ -1,1 +1,7 @@
 .env
+
+data/unifi/*
+!data/unifi/.gitkeep
+
+logs/unifi/*
+!logs/unifi/.gitkeep

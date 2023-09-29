@@ -10,8 +10,8 @@ services:
       PGID: 1000
       TZ: Etc/UTC
     volumes:
-      - ./unifi/data/:/config/data/
-      - ./unifi/logs/:/logs/
+      - ./data/unifi/:/config/data/
+      - ./logs/unifi/:/logs/
     ports:
       - 3478:3478/udp
       - 10001:10001/udp
@@ -27,5 +27,5 @@ services:
   filebeat:
     image: docker.elastic.co/beats/filebeat:7.13.0-arm64
     volumes:
-      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - ./unifi/logs:/var/log/unifi
+      - ./config/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./logs/unifi:/var/log/unifi
