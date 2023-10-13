@@ -1,17 +1,18 @@
 ---
 version: '3'
 services:
-  unifi-controller:
-    image: lscr.io/linuxserver/unifi-controller:latest
+  unifi-network-application:
+    image: lscr.io/linuxserver/unifi-network-application:latest
     hostname: ${VIRTUAL_HOST}
-    container_name: unifi-controller
+    container_name: unifi-network-application
     environment:
       PUID: 1000
       PGID: 1000
       TZ: Etc/UTC
+    env_file: .env
     volumes:
-      - ./data/unifi/:/config/data/
-      - ./logs/unifi/:/logs/
+      - ./data/unifi-network-application/:/config/data/
+      - ./logs/unifi-network-application/:/logs/
     ports:
       - 3478:3478/udp
       - 10001:10001/udp
@@ -22,6 +23,15 @@ services:
       - 8880:8880 #optional
       - 6789:6789 #optional
       - 5514:5514 #optional
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:4.4.18
+    container_name: mongo
+    env_file: .env
+    volumes:
+      - ./data/mongo:/data/db
+      - ./config/mongo/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
     restart: unless-stopped
 
   filebeat:

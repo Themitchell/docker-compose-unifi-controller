@@ -1,7 +1,11 @@
 .env
 
+data/mongo/*
+!data/mongo/.gitkeep
 data/unifi/*
 !data/unifi/.gitkeep
+data/unifi-network-application/*
+!data/unifi-network-application/.gitkeep
 
 logs/unifi/*
 !logs/unifi/.gitkeep
