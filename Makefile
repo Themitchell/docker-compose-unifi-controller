@@ -3,7 +3,7 @@ ifneq (,$(wildcard ./.env))
     export
 endif
 
-DOCKER_COMPOSE = env VIRTUAL_HOST=${VIRTUAL_HOST} docker-compose
+DOCKER_COMPOSE = env VIRTUAL_HOST=${VIRTUAL_HOST} docker compose
 
 run:
 	$(DOCKER_COMPOSE) up -d
